@@ -43,15 +43,15 @@ int readFile(const std::string & fileName, std::vector<std::string> & entries) {
 /**
  Main function of the tool. Lauch the tool without parameters to see usage information.
  @param argc Count of arguments. Expecting 3-4 (including the app binary name in the first slot.
- @param argv The parametersf.
+ @param argv The parameters.
  */
 int main(int argc, char ** argv) {
    
-   std::string indexFileName;
-   std::string dataFileName;
-   std::string outputFileName;
-   std::vector<std::string> indexes;
-   std::vector<std::string> dataEntries;
+   std::string indexFileName;                // Text file, contains the student id's one per line
+   std::string dataFileName;                 // Text file, contains student data, one per line
+   std::string outputFileName;               // Text file to write the matching students.
+   std::vector<std::string> indexes;         // Student id's read from file.
+   std::vector<std::string> dataEntries;     // Student data read from file.
    
    if (argc < 3) {
       std::cout << "Usage: filterstudents id-file studentdatafile [outputfile]" << std::endl;
