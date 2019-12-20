@@ -4,8 +4,10 @@
 #include <string>
 #include <vector>
 
+/** \file main.cpp */
+
 /**
- \brief A command line tool to filter data from datafile using id's from index file.
+ \mainpage A command line tool to filter data from datafile using id's from index file.
  <p>
  Our learning environment Moodle does not currently have information what is the study program of the student. In analysing student performance, this background can be an important piece of information. The performance (points, grade) is included in the data in Moodle, obviously.
  <p>Study program of a student can be found in another system, Oodi. Therefore, to match this data, I need to export:
@@ -23,6 +25,7 @@
 int readFile(const std::string & fileName, std::vector<std::string> & entries);
 
 /**
+ \fn int main(int argc, char ** argv)
  Main function of the tool. Lauch the tool without parameters to see usage information.
  @param argc Count of arguments. Expecting 3-4 (including the app binary name in the first slot.
  @param argv The parameters.
@@ -104,6 +107,7 @@ int main(int argc, char ** argv) {
 }
 
 /**
+ \fn int readFile(const std::string & fileName, std::vector<std::string> & entries)
  Reads lines from a text file and puts one line as a string in a vector.
  @param fileName The file to read lines from.
  @param entries The vector to put lines to.
