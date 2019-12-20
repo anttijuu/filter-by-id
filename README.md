@@ -49,7 +49,7 @@ Finding matching id's from the data file...
 3    3456 Tina London  C++ coders unite agains JavaScript
 Found 3 entries of id's in the datafile.
 ```
-
+Please note that data and id files are read into memory, so if you have very large files and little RAM, this might become an issue.
 
 ## Dependencies
 
