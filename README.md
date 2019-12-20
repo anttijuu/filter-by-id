@@ -4,12 +4,12 @@ A command line tool to filter data from datafile using id's from index file.
 
 ## Use case
 
-Our learning environment Moodle does not currently have information what is the study program of the student. In analysing student performance, this background can be an important piece of information. The performance (points, grade) is included in the data in Moodle, obviously.
+Our learning environment Moodle does not (currently) have information what is the study program of the student. In analysing student performance, this background can be an important piece of information. The performance (points, grade) is included in the data in Moodle, obviously.
 
 Study program of a student can be found in *another* system, Oodi. Therefore, to match this data, one needs to export:
 
-1. course data from Moodle, containing student id, *filtering* in only those students who have the grade(s) I am interested at any moment. For example, students who failed the course.
-2. data from Weboodi in text format, containing student id and study program, possibly other information too, for all students registered in the course.
+1. course data from Moodle, containing student id, *selecting* only those students who have the grade(s) I am interested at any moment. For example, students who failed the course.
+2. data from Weboodi in text format, containing student id and study program, possibly other information too, for all students registered in the course. Exporting data as txt is enough and simple to do, saving this as text file.
 
 And then match these two files using the student id. Then I can analyze if the student background has any relevance to the performance of the student.
 
