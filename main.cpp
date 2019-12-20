@@ -36,10 +36,10 @@ int main(int argc, char ** argv) {
    std::vector<std::string> dataEntries;     // Student data read from file.
    
    if (argc < 3) {
-      std::cout << "Usage: filterstudents id-file studentdatafile [outputfile]" << std::endl;
-      std::cout << "  Where id-file contains selected student id's" << std::endl;
-      std::cout << "  and studentdatafile contains student data in text format, one line per student." << std::endl;
-      std::cout << "  and output file will contain the results. If not given, output is to console." << std::endl;
+      std::cout << "Usage: filter id-file data-file [outputfile]" << std::endl;
+      std::cout << "  Where id-file contains id's of interest" << std::endl;
+      std::cout << "  and data-file contains data in text format, one line per data item." << std::endl;
+      std::cout << "  and output file will contain the results. If parameter not given, output is to console." << std::endl;
       return 0;
    } else {
       switch (argc) {
@@ -53,12 +53,12 @@ int main(int argc, char ** argv) {
             break;
             
          default:
-            std::cout << "Usage: filter-id indexfile datafile [outputfile]" << std::endl;
+            std::cout << "Usage: filter id-file data-file [outputfile]" << std::endl;
             break;
       }
    }
    
-   std::cout << "Read student id's into memory" << std::endl;
+   std::cout << "Reading id's into memory..." << std::endl;
    int count = readFile(indexFileName, indexes);
    if (count > 0) {
       std::cout << "Read " << indexes.size() << " id's." << std::endl;
@@ -66,9 +66,9 @@ int main(int argc, char ** argv) {
       std::cout << "Error in opening the id file." << std::endl;
       return EXIT_FAILURE;
    }
-
+   std::cout << "Id's read." << std::endl;
    
-   std::cout << "Reading studentdata file into memory..." << std::endl;
+   std::cout << "Reading data-file into memory..." << std::endl;
    count = readFile(dataFileName, dataEntries);
    if (count > 0) {
       std::cout << "Read " << dataEntries.size() << " entries." << std::endl;
@@ -88,7 +88,7 @@ int main(int argc, char ** argv) {
       output = &std::cout;
    }
 
-   std::cout << "Finding matching student id's from the data file..." << std::endl;
+   std::cout << "Finding matching id's from the data file..." << std::endl;
    int matchCount = 0;
    for (auto iter = indexes.begin(); iter != indexes.end(); iter++) {
       for (auto iter2 = dataEntries.begin(); iter2 != dataEntries.end(); iter2++) {
@@ -122,7 +122,7 @@ int readFile(const std::string & fileName, std::vector<std::string> & entries) {
       }
       file.close();
    } else {
-      std::cout << "Error in opening the  file." << std::endl;
+      std::cout << "Error in opening the file." << std::endl;
       return -1;
    }
    return count;
