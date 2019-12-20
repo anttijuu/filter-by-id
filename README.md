@@ -30,6 +30,27 @@ Output file is optional; if not included output will be displayed in the console
 
 Lauch the tool without parameters to see the usage instructions.
 
+Project contains sample files you can try out:
+
+`filter sample-id.txt sample-data.txt`
+
+Output looks like this:
+
+```
+./build/filter sample-id.txt sample-data.txt
+Reading id's into memory...
+Read 4 id's.
+Id's read.
+Reading data-file into memory...
+Read 6 entries.
+Finding matching id's from the data file...
+1    1234 Lare Nisula  Society for sober lecturers
+2    2345 Zipped File  Unpack me please
+3    3456 Tina London  C++ coders unite agains JavaScript
+Found 3 entries of id's in the datafile.
+```
+
+
 ## Dependencies
 
 Uses C++ STL, requires C++17. Build file is CMake so install [CMake](https://cmake.org) or build it manually / write your own makefile.
