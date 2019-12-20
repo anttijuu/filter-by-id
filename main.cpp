@@ -22,6 +22,7 @@
  */
 
 // Forward declaration
+[[nodiscard]]
 int readFile(const std::string & fileName, std::vector<std::string> & entries);
 
 /**
