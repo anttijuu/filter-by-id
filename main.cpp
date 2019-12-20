@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -63,7 +64,7 @@ int main(int argc, char ** argv) {
       switch (argc) {
          case 4:
             outputFileName = argv[3];
-            // [[fallthrough]];
+            [[fallthrough]];
             
          case 3:
             indexFileName = argv[1];
