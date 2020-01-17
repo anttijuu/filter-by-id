@@ -21,14 +21,14 @@
  @author Antti Juustila
  */
 
-// Forward declaration
+// Forward declaration of the helper function.
 [[nodiscard]]
 int readFile(const std::string & fileName, std::vector<std::string> & entries);
 
 /**
  \fn int main(int argc, char ** argv)
  Main function of the tool. Lauch the tool without parameters to see usage information.
- @param argc Count of arguments. Expecting 3-4 (including the app binary name in the first slot.
+ @param argc Count of arguments. Expecting 3-4 (including the app binary name in the first slot).
  @param argv The parameters.
  */
 int main(int argc, char ** argv) {
@@ -67,7 +67,7 @@ int main(int argc, char ** argv) {
    if (count > 0) {
       std::cout << "Read " << indexes.size() << " id's." << std::endl;
    } else {
-      std::cout << "Error in opening the id file." << std::endl;
+      std::cout << "Error in opening the id file or file empty." << std::endl;
       return EXIT_FAILURE;
    }
    std::cout << "Id's read." << std::endl;
@@ -77,7 +77,7 @@ int main(int argc, char ** argv) {
    if (count > 0) {
       std::cout << "Read " << dataEntries.size() << " entries." << std::endl;
    } else {
-      std::cout << "Error in opening the data file." << std::endl;
+      std::cout << "Error in opening the data file or file empty." << std::endl;
       return EXIT_FAILURE;
    }
 
@@ -101,7 +101,7 @@ int main(int argc, char ** argv) {
             matchCount++;
             return true; // Not returning from the app but from the lambda function.
          }
-         return false;
+         return false;   // Not returning from the app but from the lambda function.
       });
    });
    
@@ -119,8 +119,8 @@ int main(int argc, char ** argv) {
 int readFile(const std::string & fileName, std::vector<std::string> & entries) {
    int count = 0;
    std::ifstream file(fileName);
-   std::string entry;
    if (file.is_open()) {
+      std::string entry;
       while (std::getline(file, entry)) {
          if (entry.length() > 0) {
             entries.push_back(entry);

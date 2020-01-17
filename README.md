@@ -22,6 +22,8 @@ You need two text files:
 - id file: id strings, one in each line -- only the id, nothing else, per line for data which interests you;
 - data file: one record per line, *including* the id and whatever else there is / you need.
 
+Empty lines from both files are ignored.
+
 After building (see below), launch the tool to find data from data files, matching the id's in the id file:
 
 `filter id-file data-file [outputfile]`
@@ -30,14 +32,14 @@ Output file is optional; if not included output will be displayed in the console
 
 Lauch the tool without parameters to see the usage instructions.
 
-Project contains sample files you can try out:
+Project contains sample files you can try out after building the binary (from the build directory):
 
-`filter sample-id.txt sample-data.txt`
+`./filter ../sample-id.txt ../sample-data.txt`
 
 Output looks like this:
 
 ```
-./build/filter sample-id.txt sample-data.txt
+./filter ../sample-id.txt ../sample-data.txt
 Reading id's into memory...
 Read 4 id's.
 Id's read.
@@ -59,16 +61,16 @@ Uses C++ STL, requires C++17. Build file is CMake so install [CMake](https://cma
 
 With CMake, do in the project directory:
 
-1. mkdir build
-2. cd build
-3. cmake ..
-4. make
+1. `mkdir build`
+2. `cd build`
+3. `cmake ..` (or `cmake -GNinja ..` if you use [Ninja](https://ninja-build.org), or `cmake -GXcode ..` to create a Xcode project, for example)
+4. `make` (or `ninja`, if you created build files using `-GNinja`)
 
 BInary should be in the build directory. Then launch the tool as instructed above.
 
 ## Who made this
 
-(c) Antti Juustila, 2019. INTERACT Research Unit, University of Oulu, Finland.
+(c) Antti Juustila, 2019-2020. All rights reserved. [INTERACT Research Unit](http://interact.oulu.fi), University of Oulu, Finland.
 
 ## License
 
