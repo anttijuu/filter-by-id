@@ -95,7 +95,7 @@ int main(int argc, char ** argv) {
    std::cout << "Finding matching id's from the data file..." << std::endl;
    int matchCount = 0;
    std::for_each(std::begin(indexes), std::end(indexes), [&matchCount, &dataEntries, &output](const std::string & index) {
-      std::any_of(std::begin(dataEntries), std::end(dataEntries), [&matchCount, &dataEntries, &index, &output](const std::string & dataEntry) {
+      std::any_of(std::begin(dataEntries), std::end(dataEntries), [&matchCount, &index, &output](const std::string & dataEntry) {
          if (dataEntry.find(index) != std::string::npos) {
             *output << matchCount+1 << "   " << dataEntry << std::endl;
             matchCount++;
