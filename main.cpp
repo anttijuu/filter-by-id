@@ -94,15 +94,17 @@ int main(int argc, char ** argv) {
 
    std::cout << "Finding matching id's from the data file..." << std::endl;
    int matchCount = 0;
-   for (auto iter = indexes.begin(); iter != indexes.end(); iter++) {
-      for (auto iter2 = dataEntries.begin(); iter2 != dataEntries.end(); iter2++) {
-         if ((*iter2).find(*iter) != std::string::npos) {
-            *output << matchCount+1 << "    " << *iter2 << std::endl;
+   std::for_each(std::begin(indexes), std::end(indexes), [&matchCount, &dataEntries, &output](const std::string & index) {
+      std::any_of(std::begin(dataEntries), std::end(dataEntries), [&matchCount, &dataEntries, &index, &output](const std::string & dataEntry) {
+         if (dataEntry.find(index) != std::string::npos) {
+            *output << matchCount+1 << "   " << dataEntry << std::endl;
             matchCount++;
-            break;
+            return true;
          }
-      }
-   }
+         return false;
+      });
+   });
+   
    std::cout << "Found " << matchCount << " entries of id's in the datafile." << std::endl;
    return EXIT_SUCCESS;
 }
