@@ -86,8 +86,13 @@ int main(int argc, char ** argv) {
    std::ostream * output;
    if (outputFileName.length() > 0) {
       outputFile.open(outputFileName);
-      std::cout << "Output will be in file " << outputFileName << std::endl;
-      output = &outputFile;
+      if (outputFile.is_open()) {
+         std::cout << "Output will be in file " << outputFileName << std::endl;
+         output = &outputFile;
+      } else {
+         std::cout << "Error: could not open the output file" << std::endl;
+         return EXIT_FAILURE;
+      }
    } else {
       output = &std::cout;
    }
