@@ -1,26 +1,13 @@
 # Filter data by id
 
-A command line tool to filter data from datafile using id's from index file.
-
-## Use case
-
-Our learning environment Moodle does not (currently) have information what is the study program of the student. In analysing student performance, this background can be an important piece of information. The performance (points, grade) is included in the data in Moodle, obviously.
-
-Study program of a student can be found in *another* system, Oodi. Therefore, to match this data, one needs to export:
-
-1. course data from Moodle, containing student id, *selecting* only those students who have the grade(s) I am interested at any moment. For example, students who failed the course.
-2. data from Weboodi in text format, containing student id and study program, possibly other information too, for all students registered in the course. Exporting data as txt is enough and simple to do, saving this as text file.
-
-And then match these two files using the student id. Then I can analyze if the student background has any relevance to the performance of the student.
-
-This command line tool enables you to do this.
+A command line tool to filter data from data file using id's from index file.
 
 ## Usage
 
-You need two text files:
+The tool reads two text files:
 
-- id file: id strings, one in each line -- only the id, nothing else, per line for data which interests you;
-- data file: one record per line, *including* the id and whatever else there is / you need.
+- id file: id strings, one in each line -- *only* the id, nothing else, one per line for data which interests you;
+- data file: one record per line, perhaps *including* an id and whatever else there is.
 
 Empty lines from both files are ignored.
 
@@ -55,7 +42,7 @@ Please note that data and id files are read into memory, so if you have very lar
 
 ## Dependencies
 
-Uses C++ STL, requires C++17. Build file is CMake so install [CMake](https://cmake.org) or build it manually / write your own makefile.
+Uses C++ STL, C++17. Build file is CMake so install [CMake](https://cmake.org) or build it manually / write your own makefile.
 
 ## Building
 
@@ -67,6 +54,14 @@ With CMake, do in the project directory:
 4. `make` (or `ninja`, if you created build files using `-GNinja`)
 
 BInary should be in the build directory. Then launch the tool as instructed above.
+
+If you have Doxygen installed and wish to generate documentation of the code, run
+
+```
+make doc
+```
+and you'll have HTML docs in the build/docs directory.
+
 
 ## Who made this
 

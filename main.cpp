@@ -9,14 +9,8 @@
 /**
  \mainpage A command line tool to filter data from datafile using id's from index file.
  <p>
- Use case: Our learning environment Moodle does not currently have information what is the study program of the student. In analysing student performance, this background can be an important piece of information. The performance (points, grade) is included in the data in Moodle, obviously.
- <p>Study program of a student can be found in another system, Oodi. Therefore, to match this data, I need to export:
- <p><ul>
- <li>course data from Moodle, containing student id, filtering in only those students who have the grade(s) I am interested at any moment. For example, students who failed the course.</li>
- <li>data from Weboodi in text format, containing student id and study program, possibly other information too, for all students registered in the course.</li>
-  </ul><p>
- And then match these two files using the student id. Then I can analyze if the student background has any relevance to the performance of the student.
- <p>This command line tool enables you to do this. It doesn't matter what is your application area, the app just searches for entries in index file from the records in the data file.
+ Files must be text only. Index file must contain only the id's (numbers, strings), nothing more.
+ Files are read into memory, so very large files might be a problem.
  
  @author Antti Juustila
  */
