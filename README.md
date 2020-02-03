@@ -53,7 +53,7 @@ With CMake, do in the project directory:
 3. `cmake ..` (or `cmake -GNinja ..` if you use [Ninja](https://ninja-build.org), or `cmake -GXcode ..` to create a Xcode project, for example)
 4. `make` (or `ninja`, if you created build files using `-GNinja`)
 
-BInary should be in the build directory. Then launch the tool as instructed above.
+Binary should be in the build directory. Then launch the tool as instructed above.
 
 If you have Doxygen installed and wish to generate documentation of the code, run
 
