@@ -15,7 +15,7 @@ After building (see below), launch the tool to find data from data files, matchi
 
 `filter id-file data-file [outputfile]`
 
-Output file is optional; if not included output will be displayed in the console. Output includes those students from data-file, whose id is listed in the id-file.
+Output file is optional; if not included output will be displayed in the console. Output includes those records from the data-file, whose id is listed in the id-file.
 
 Lauch the tool without parameters to see the usage instructions.
 
