@@ -11,7 +11,8 @@
 /**
  \mainpage A command line tool to filter data from datafile using id's from index file.
  <p>
- Files must be text only. Index file must contain only the id's (numbers, strings), nothing more.
+ Files must be text only. Index file must contain only the id's (one word; numbers, strings),
+ and after space (or tab) other data if needed to use it for filtering by id file contents.
  Files are read into memory, so very large files might be a problem.
  
  @author Antti Juustila
@@ -25,7 +26,7 @@ int readDataFile(const std::string & fileName, std::vector<std::string> & entrie
 /**
  \fn int main(int argc, char ** argv)
  Main function of the tool. Lauch the tool without parameters to see usage information.
- @param argc Count of arguments. Expecting 3-4 (including the app binary name in the first slot).
+ @param argc Count of arguments. Expecting 4-5 (including the app binary name in the first slot).
  @param argv The parameters.
  */
 int main(int argc, char ** argv) {
@@ -108,6 +109,12 @@ int main(int argc, char ** argv) {
    return EXIT_SUCCESS;
 }
 
+/**
+ Helper function to extract the first word from the id file record.
+ This is the id we are using to find matches from the data file.
+ @param entry The data record
+ @return The id from the record.
+ */
 std::string firstWord(const std::string & entry) {
    std::vector<std::string> strs;
    boost::split(strs, entry, boost::is_any_of("\t "));
@@ -120,9 +127,11 @@ std::string firstWord(const std::string & entry) {
 /**
  \fn int readIdFile(const std::string & fileName, std::vector<std::string> & entries, const std::string & filter)
  Reads lines from a text file and puts the first word of the line as a string in a vector.
+ If filter is used, only records where the rest of the string contains the filter string are included in
+ the entries.
  @param fileName The file to read lines from.
  @param entries The vector to put lines to.
- @param filter A value to filter the records to include in the process.
+ @param filter A value to filter the records to include in the process that satisfy the filter.
  @return The count of lines read, -1 if failed to open or read the file.
  */
 int readIdFile(const std::string & fileName, std::vector<std::string> & entries, const std::string & filter) {
@@ -160,10 +169,12 @@ int readIdFile(const std::string & fileName, std::vector<std::string> & entries,
 
 /**
  \fn int readDataFile(const std::string & fileName, std::vector<std::string> & entries)
- Reads lines from a text file and puts the first word of the line as a string in a vector.
+ Reads lines from a text file and puts the the line as a string in a vector.
  @param fileName The file to read lines from.
  @param entries The vector to put lines to.
  @return The count of lines read, -1 if failed to open or read the file.
+ @todo Could already do the matching and saving to output file already here for each datafile record.
+ Would save memory.
  */
 int readDataFile(const std::string & fileName, std::vector<std::string> & entries) {
    int count = 0;
