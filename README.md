@@ -44,6 +44,20 @@ And the contents of the output file are:
 2   2345 Zipped File  Unpack me please
 3   3456 Tina London  C++ coders unite agains JavaScript
 ```
+Another example, using a filter:
+
+```
+./filter ../id-grade-2020.txt ../all-studs-2020.txt output.txt fail
+```
+Here, the id file contains the student id and grade, of which one may be "fail". data file contains full student information, including student id, department, etc.
+
+Result file then includes information about all failed students:
+
+```
+1915774     John Smith              Dept of Mathematics
+2728090     Jill Abernath           Dept of Inf proc sci
+2836322     Hamburg Slippery-Slope  Dept of silly walk
+```
 
 Please note that data and id files are read into memory, so if you have very large files and little RAM, this might become an issue.
 
