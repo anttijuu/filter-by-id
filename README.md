@@ -6,43 +6,50 @@ A command line tool to filter data from data file using id's from index file.
 
 The tool reads two text files:
 
-- id file: id strings, one in each line -- *only* the id, nothing else, one per line for data which interests you;
+- id file: id strings, one in each line --  the id (one word) must be the first word in the line;
 - data file: one record per line, perhaps *including* an id and whatever else there is.
 
 Empty lines from both files are ignored.
 
 After building (see below), launch the tool to find data from data files, matching the id's in the id file:
 
-`filter id-file data-file [outputfile]`
+`filter id-file data-file outputfile [filter]`
 
-Output file is optional; if not included output will be displayed in the console. Output includes those records from the data-file, whose id is listed in the id-file.
+Filter is optional; if not included id file is not filtered by the value it contains. Otherwise only those lines from the id file containing the filter word are included.
+
+Output file includes those records from the data-file, whose id is listed in the id-file, if not filtered out because of the filter word.
 
 Lauch the tool without parameters to see the usage instructions.
 
 Project contains sample files you can try out after building the binary (from the build directory):
 
-`./filter ../sample-id.txt ../sample-data.txt`
+`./filter ../sample-id.txt ../sample-data.txt output.txt`
 
-Output looks like this:
+Execution looks like this:
 
 ```
-./filter ../sample-id.txt ../sample-data.txt
+./filter ../sample-id.txt ../sample-data.txt output.txt
 Reading id's into memory...
 Read 4 id's.
 Id's read.
 Reading data-file into memory...
 Read 6 entries.
 Finding matching id's from the data file...
-1    1234 Lare Nisula  Society for sober lecturers
-2    2345 Zipped File  Unpack me please
-3    3456 Tina London  C++ coders unite agains JavaScript
 Found 3 entries of id's in the datafile.
 ```
+And the contents of the output file are:
+
+```
+1   1234 Lare Nisula  Society for sober lecturers
+2   2345 Zipped File  Unpack me please
+3   3456 Tina London  C++ coders unite agains JavaScript
+```
+
 Please note that data and id files are read into memory, so if you have very large files and little RAM, this might become an issue.
 
 ## Dependencies
 
-Uses C++ STL, C++17. Build file is CMake so install [CMake](https://cmake.org) or build it manually / write your own makefile.
+Uses C++ STL, C++17 and Boost 1.74. Build file is CMake so install [CMake](https://cmake.org) or build it manually / write your own makefile.
 
 ## Building
 
