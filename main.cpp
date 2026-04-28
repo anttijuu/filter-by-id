@@ -145,7 +145,7 @@ int readIdFile(const std::string & fileName, std::vector<std::string> & entries,
             if (filter.length() > 0) {
                // Ignore the first word (id) of the entry, and look for the
                // remainder of the record if it contains the filter word.
-               auto pos = entry.find_first_of(" \t");
+               auto pos = entry.find_first_of("\t");
                if (pos >= 0) {
                   const std::string & substring = entry.substr(pos);
                   if (substring.find(filter) != std::string::npos) {
